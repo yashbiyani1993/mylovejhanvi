@@ -1,21 +1,116 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2487.5">
-  <style type="text/css">
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 16.8px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #fc325a}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 14.4px 'Helvetica Neue'; color: #fc325a; -webkit-text-stroke: #fc325a; background-color: #ffffff}
-    span.s1 {font-kerning: none}
-    span.s2 {font: 16.8px '.Apple Color Emoji UI'; font-kerning: none}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jhanvi, will You Be My Valentine?</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+.buttons {
+    position: relative;
+    height: 200px;
+}
+
+button {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+#yes {
+    background: #ff4d6d;
+    color: white;
+    font-size: 1.4rem;
+}
+
+#no {
+    position: absolute;
+    background: white;
+    color: #ff4d6d;
+}
+
+.hearts {
+    position: absolute;
+    font-size: 20px;
+    animation: float 3s linear infinite;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-200px);
+        opacity: 0;
+    }
+}
+</style>
 </head>
+
 <body>
-<h1 style="margin: 0.0px 0.0px 30.0px 0.0px; text-align: center; font: 36.0px Helvetica; color: #ffffff; -webkit-text-stroke: #ffffff"><span class="s1"><b>Jhanvi, will you be my Valentine?</b></span></h1>
-<p class="p2"><span class="s1">YES </span><span class="s2">💖</span></p>
-<p class="p3"><span class="s1">No</span></p>
+
+<div class="container">
+    <h1>Will you be my Valentine?</h1>
+
+    <div class="buttons">
+        <button id="yes">YES 💖</button>
+        <button id="no">No</button>
+    </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+
+noBtn.addEventListener("mouseover", () => {
+    const x = Math.random() * 300;
+    const y = Math.random() * 150;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+yesBtn.addEventListener("click", () => {
+    document.body.innerHTML = "<h1 style='color:white;'>YAY! I love you 💘</h1>";
+    setInterval(createHeart, 200);
+});
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("hearts");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.bottom = "0px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 3000);
+}
+</script>
+
 </body>
 </html>
